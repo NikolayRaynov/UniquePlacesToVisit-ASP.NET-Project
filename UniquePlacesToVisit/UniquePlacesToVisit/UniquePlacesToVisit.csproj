@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-UniquePlacesToVisit-32519938-a9f3-445e-84e4-e5e5b3da3a7d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniquePlacesToVisit.Common\UniquePlacesToVisit.Common.csproj" />
+    <ProjectReference Include="..\UniquePlacesToVisit.Data.Models\UniquePlacesToVisit.Data.Models.csproj" />
+    <ProjectReference Include="..\UniquePlacesToVisit.Data\UniquePlacesToVisit.Data.csproj" />
+    <ProjectReference Include="..\UniquePlacesToVisit.Web.ViewModels\UniquePlacesToVisit.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

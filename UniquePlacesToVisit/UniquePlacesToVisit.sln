@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniquePlacesToVisit", "UniquePlacesToVisit\UniquePlacesToVisit.csproj", "{0A2CC962-E2D5-4338-A54F-4D36C987A967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{44B17264-FCD7-4E85-8584-AE391F3423F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{95F610B5-AADF-4327-BC70-1496848980CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniquePlacesToVisit.Data", "UniquePlacesToVisit.Data\UniquePlacesToVisit.Data.csproj", "{DE8DDBAB-EB59-40CF-A417-9FBEB656037E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniquePlacesToVisit.Data.Models", "UniquePlacesToVisit.Data.Models\UniquePlacesToVisit.Data.Models.csproj", "{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniquePlacesToVisit.Web.ViewModels", "UniquePlacesToVisit.Web.ViewModels\UniquePlacesToVisit.Web.ViewModels.csproj", "{1D933264-969F-40CC-A755-86508243C454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniquePlacesToVisit.Common", "UniquePlacesToVisit.Common\UniquePlacesToVisit.Common.csproj", "{99E3BD9E-79CB-4770-9B33-040029493D14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A2CC962-E2D5-4338-A54F-4D36C987A967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2CC962-E2D5-4338-A54F-4D36C987A967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2CC962-E2D5-4338-A54F-4D36C987A967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2CC962-E2D5-4338-A54F-4D36C987A967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8DDBAB-EB59-40CF-A417-9FBEB656037E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8DDBAB-EB59-40CF-A417-9FBEB656037E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8DDBAB-EB59-40CF-A417-9FBEB656037E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8DDBAB-EB59-40CF-A417-9FBEB656037E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D933264-969F-40CC-A755-86508243C454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D933264-969F-40CC-A755-86508243C454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D933264-969F-40CC-A755-86508243C454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D933264-969F-40CC-A755-86508243C454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E3BD9E-79CB-4770-9B33-040029493D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E3BD9E-79CB-4770-9B33-040029493D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E3BD9E-79CB-4770-9B33-040029493D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E3BD9E-79CB-4770-9B33-040029493D14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A2CC962-E2D5-4338-A54F-4D36C987A967} = {95F610B5-AADF-4327-BC70-1496848980CE}
+		{DE8DDBAB-EB59-40CF-A417-9FBEB656037E} = {44B17264-FCD7-4E85-8584-AE391F3423F1}
+		{9186A4E6-1B71-48F9-B1F9-34DCC3BCE758} = {44B17264-FCD7-4E85-8584-AE391F3423F1}
+		{1D933264-969F-40CC-A755-86508243C454} = {95F610B5-AADF-4327-BC70-1496848980CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7E5D8B7-D94A-4B57-AA15-09B428E427BE}
+	EndGlobalSection
+EndGlobal
