@@ -1,31 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using static UniquePlacesToVisit.Common.EntityValidationConstans.Review;
 
 namespace UniquePlacesToVisit.Data.Models
 {
     public class Review
     {
+        [Key]
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(ReviewTextMinLength)]
+        [Comment("User review for current destination")]
         public string ReviewText { get; set; } = null!;
 
+        [Comment("Rating from user with range one to five stars")]
         public int Rating { get; set; }
 
+        [Comment("Date on publish commnent")]
         public DateTime CreatedAt { get; set; }
 
         public int AttractionId { get; set; }
 
         [ForeignKey(nameof(AttractionId))]
-        public Attraction Attraction { get; set; } = null!;
+        public virtual Attraction Attraction { get; set; } = null!;
 
-        public string UserId { get; set; } = null!;
+        public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public ApplicationUser User { get; set; } = null!;
+        public virtual ApplicationUser User { get; set; } = null!;
+
+        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 
 }

@@ -1,17 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UniquePlacesToVisit.Data.Models
 {
-    public class User : IdentityUser<Guid>
+    public class ApplicationUser : IdentityUser<Guid>
     {
-        public User()
+        public ApplicationUser()
         {
             this.Id = Guid.NewGuid();
         }
+
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }
