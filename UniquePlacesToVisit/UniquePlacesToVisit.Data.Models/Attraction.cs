@@ -26,6 +26,10 @@ namespace UniquePlacesToVisit.Data.Models
         [Comment("Location at attraction in current city")]
         public string Location { get; set; } = null!;
 
+        [MaxLength(MaxImagePathLength)]
+        [DataType(DataType.ImageUrl)]
+        public string ImagePath { get; set; } = null!;
+
         public int CityId { get; set; }
 
         [ForeignKey(nameof(CityId))]

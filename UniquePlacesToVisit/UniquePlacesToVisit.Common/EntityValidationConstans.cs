@@ -16,6 +16,7 @@ namespace UniquePlacesToVisit.Common
             public const int DescriptionMaxLenth = 500;
             public const int LocationMinLenth = 10;
             public const int LocationMaxLenth = 300;
+            public const int MaxImagePathLength = 255;
         }
 
         public static class City
