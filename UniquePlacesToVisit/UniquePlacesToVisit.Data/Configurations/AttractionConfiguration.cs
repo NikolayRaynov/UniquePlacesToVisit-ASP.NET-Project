@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UniquePlacesToVisit.Data.Models;
 
 namespace UniquePlacesToVisit.Data.Configurations
@@ -18,5 +13,10 @@ namespace UniquePlacesToVisit.Data.Configurations
                 .WithMany(a => a.Attractions)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
+        //public IEnumerable<Attraction> SeedAttractions()
+        //{
+
+        //}
     }
 }
