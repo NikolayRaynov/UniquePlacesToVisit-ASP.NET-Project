@@ -275,6 +275,23 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ApplicationUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "826431e5-4897-4a6d-a70c-3cbe37bdfb3b",
+                            Email = "mysecretemail@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MYSECRETEMAIL@GMAIL.COM",
+                            NormalizedUserName = "MYSECRETEMAIL@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAENOnbYOjsXQvPXZJaw7eOSDSa+8p/uHa08jqvU0k3aHGQlEpIQ3tcoJpgigvrDQ+uw==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "mysecretemail@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Attraction", b =>
@@ -294,6 +311,11 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasComment("Description to attraction in current city");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -306,11 +328,60 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasColumnType("nvarchar(80)")
                         .HasComment("Attraction name");
 
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValue(new Guid("babedf22-6aca-4570-a7fc-23bc05fca770"));
+
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Attractions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CityId = 15,
+                            Description = "Исторически манастир в югозападна България, известен със своята архитектура и история.Той е ставропигиален манастир на Българската православна църква, сред най-значимите културни паметници в България, символ на страната, включен в Списъка на световното наследство на ЮНЕСКО.",
+                            ImagePath = "/images/attractions/rilski-manastir.jpg",
+                            Location = "Рила планина, Благоевградска област",
+                            Name = "Рилски манастир",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CityId = 1,
+                            Description = "Софийският зоопарк е една от атракциите в София. Той е сред Стоте национални туристически обекта на Българския туристически съюз. Понастоящем в софийската зоологическа градина се отглеждат голям брой екзотични животни, както и много животни, които са характерни за българските земи. ",
+                            ImagePath = "/images/attractions/zoo-sofia.jpg",
+                            Location = "София",
+                            Name = "Зоопарк София",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CityId = 23,
+                            Description = "Освен с археологическите находки пещерата е известна и с многообразието от обитатели. Заради размножителния период на населяващите пещерата бозайници през юни и юли изцяло се затваря за посетители. Там обитават 12 вида защитени земноводни",
+                            ImagePath = "/images/attractions/devetashka-peshtera.jpg",
+                            Location = "Ловеч",
+                            Name = "Деветашка пещера",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CityId = 3,
+                            Description = "Разположен е сред зеленината в северната част на варненската Морска градина, с чудесен изглед към морето.\nОткрит е на 19.08.1984 г. и е един от символите не само на Варна, а и на българския туризъм. Делфинариумът е неотменна точка в програмите на всички туристи, посещаващи Черноморието.",
+                            ImagePath = "/images/attractions/delfinarium-varna.jpg",
+                            Location = "Варна",
+                            Name = "Делфинариум Варна",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.City", b =>
@@ -636,7 +707,15 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("UniquePlacesToVisit.Data.Models.ApplicationUser", "User")
+                        .WithMany("Attractions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
@@ -679,6 +758,8 @@ namespace UniquePlacesToVisit.Data.Migrations
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Attractions");
+
                     b.Navigation("Comments");
 
                     b.Navigation("Reviews");

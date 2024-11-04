@@ -8,6 +8,7 @@ namespace UniquePlacesToVisit.Data.Models
 {
     public class Attraction
     {
+        
         [Key]
         public int Id { get; set; }
 
@@ -28,12 +29,16 @@ namespace UniquePlacesToVisit.Data.Models
 
         [MaxLength(MaxImagePathLength)]
         [DataType(DataType.ImageUrl)]
-        public string ImagePath { get; set; } = null!;
+        public string? ImagePath { get; set; }
 
         public int CityId { get; set; }
-
         [ForeignKey(nameof(CityId))]
         public virtual City City { get; set; } = null!;
+
+
+        public Guid UserId { get; set; } = Guid.NewGuid();
+        [ForeignKey(nameof(UserId))]
+        public virtual ApplicationUser User { get; set; } = null!;
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
