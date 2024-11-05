@@ -275,23 +275,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ApplicationUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "826431e5-4897-4a6d-a70c-3cbe37bdfb3b",
-                            Email = "mysecretemail@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "MYSECRETEMAIL@GMAIL.COM",
-                            NormalizedUserName = "MYSECRETEMAIL@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENOnbYOjsXQvPXZJaw7eOSDSa+8p/uHa08jqvU0k3aHGQlEpIQ3tcoJpgigvrDQ+uw==",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "mysecretemail@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Attraction", b =>
@@ -312,7 +295,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasComment("Description to attraction in current city");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -632,8 +614,8 @@ namespace UniquePlacesToVisit.Data.Migrations
 
                     b.Property<string>("ReviewText")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("User review for current destination");
 
                     b.Property<Guid>("UserId")

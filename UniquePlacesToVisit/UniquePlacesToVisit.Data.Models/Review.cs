@@ -12,7 +12,7 @@ namespace UniquePlacesToVisit.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(ReviewTextMinLength)]
+        [StringLength(maximumLength: ReviewTextMaxLength, MinimumLength = ReviewTextMinLength)]
         [Comment("User review for current destination")]
         public string ReviewText { get; set; } = null!;
 
