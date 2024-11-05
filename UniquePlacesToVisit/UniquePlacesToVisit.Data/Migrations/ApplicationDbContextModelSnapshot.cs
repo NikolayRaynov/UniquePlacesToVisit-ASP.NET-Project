@@ -628,6 +628,44 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AttractionId = 1,
+                            CreatedAt = new DateTime(2024, 10, 26, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2455),
+                            Rating = 5,
+                            ReviewText = "Много красиво място с невероятна история. Малко е встрани от пътя, но пътуването си заслужава!",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AttractionId = 2,
+                            CreatedAt = new DateTime(2024, 10, 31, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2589),
+                            Rating = 5,
+                            ReviewText = "Много голям зоопарк със всякакви животни,които няма в никой друг зоопарк в България.",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AttractionId = 3,
+                            CreatedAt = new DateTime(2024, 11, 3, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2611),
+                            Rating = 5,
+                            ReviewText = "Невероятно красиво място",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AttractionId = 4,
+                            CreatedAt = new DateTime(2024, 10, 31, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2627),
+                            Rating = 5,
+                            ReviewText = "Задължително трябва да се посети",
+                            UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
