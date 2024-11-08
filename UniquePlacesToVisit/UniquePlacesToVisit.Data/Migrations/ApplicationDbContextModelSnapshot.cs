@@ -591,6 +591,40 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 10, 28, 21, 5, 43, 864, DateTimeKind.Local).AddTicks(9954),
+                            ReCommentText = "Съгласен съм, мястото е уникално!",
+                            ReviewId = 1,
+                            UserId = new Guid("1605a048-00a2-44ef-bddb-171cd11dd641")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 11, 2, 21, 5, 43, 865, DateTimeKind.Local).AddTicks(56),
+                            ReCommentText = "Част от животните липсваха.",
+                            ReviewId = 2,
+                            UserId = new Guid("1605a048-00a2-44ef-bddb-171cd11dd641")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 11, 5, 21, 5, 43, 865, DateTimeKind.Local).AddTicks(67),
+                            ReCommentText = "Съгласен съм, мястото е уникално!",
+                            ReviewId = 3,
+                            UserId = new Guid("1605a048-00a2-44ef-bddb-171cd11dd641")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 11, 3, 21, 5, 43, 865, DateTimeKind.Local).AddTicks(75),
+                            ReCommentText = "Съгласен съм, мястото е уникално!",
+                            ReviewId = 4,
+                            UserId = new Guid("1605a048-00a2-44ef-bddb-171cd11dd641")
+                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>
@@ -634,7 +668,7 @@ namespace UniquePlacesToVisit.Data.Migrations
                         {
                             Id = 1,
                             AttractionId = 1,
-                            CreatedAt = new DateTime(2024, 10, 26, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2455),
+                            CreatedAt = new DateTime(2024, 10, 27, 21, 5, 43, 866, DateTimeKind.Local).AddTicks(48),
                             Rating = 5,
                             ReviewText = "Много красиво място с невероятна история. Малко е встрани от пътя, но пътуването си заслужава!",
                             UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
@@ -643,7 +677,7 @@ namespace UniquePlacesToVisit.Data.Migrations
                         {
                             Id = 2,
                             AttractionId = 2,
-                            CreatedAt = new DateTime(2024, 10, 31, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2589),
+                            CreatedAt = new DateTime(2024, 11, 1, 21, 5, 43, 866, DateTimeKind.Local).AddTicks(124),
                             Rating = 5,
                             ReviewText = "Много голям зоопарк със всякакви животни,които няма в никой друг зоопарк в България.",
                             UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
@@ -652,7 +686,7 @@ namespace UniquePlacesToVisit.Data.Migrations
                         {
                             Id = 3,
                             AttractionId = 3,
-                            CreatedAt = new DateTime(2024, 11, 3, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2611),
+                            CreatedAt = new DateTime(2024, 11, 4, 21, 5, 43, 866, DateTimeKind.Local).AddTicks(135),
                             Rating = 5,
                             ReviewText = "Невероятно красиво място",
                             UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
@@ -661,7 +695,7 @@ namespace UniquePlacesToVisit.Data.Migrations
                         {
                             Id = 4,
                             AttractionId = 4,
-                            CreatedAt = new DateTime(2024, 10, 31, 16, 1, 25, 122, DateTimeKind.Local).AddTicks(2627),
+                            CreatedAt = new DateTime(2024, 11, 1, 21, 5, 43, 866, DateTimeKind.Local).AddTicks(143),
                             Rating = 5,
                             ReviewText = "Задължително трябва да се посети",
                             UserId = new Guid("babedf22-6aca-4570-a7fc-23bc05fca770")
