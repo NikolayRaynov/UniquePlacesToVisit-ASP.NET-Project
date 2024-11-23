@@ -31,6 +31,10 @@ namespace UniquePlacesToVisit.Data.Models
 
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;
+        public int? ParentCommentId { get; set; }
+        public Comment? ParentComment { get; set; }
+
+        public ICollection<Comment> Replies { get; set; } = new List<Comment>();
     }
 
 }

@@ -19,10 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UniquePlaces.Web.Infrastructure\UniquePlacesToVisit.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\UniquePlacesToVisit.Common\UniquePlacesToVisit.Common.csproj" />
     <ProjectReference Include="..\UniquePlacesToVisit.Data.Models\UniquePlacesToVisit.Data.Models.csproj" />
     <ProjectReference Include="..\UniquePlacesToVisit.Data\UniquePlacesToVisit.Data.csproj" />
     <ProjectReference Include="..\UniquePlacesToVisit.Web.ViewModels\UniquePlacesToVisit.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\UniquePlacesToVist.Services.Data\UniquePlacesToVist.Services.Data.csproj" />
   </ItemGroup>
 
 </Project>

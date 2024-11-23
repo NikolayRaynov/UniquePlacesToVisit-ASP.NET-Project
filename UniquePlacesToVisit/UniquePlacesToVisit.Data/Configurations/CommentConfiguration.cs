@@ -31,7 +31,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     ReCommentText = "Съгласен съм, мястото е уникално!",
                     CreatedAt = DateTime.Now.AddDays(-9),
                     ReviewId = 1,
-                    UserId = Guid.Parse("1605a048-00a2-44ef-bddb-171cd11dd641")
+                    UserId = Guid.Parse("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
                 },
                 new Comment
                 {
@@ -39,7 +39,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     ReCommentText = "Част от животните липсваха.",
                     CreatedAt = DateTime.Now.AddDays(-4),
                     ReviewId = 2,
-                    UserId = Guid.Parse("1605a048-00a2-44ef-bddb-171cd11dd641")
+                    UserId = Guid.Parse("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
                 },
                 new Comment
                 {
@@ -47,7 +47,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     ReCommentText = "Съгласен съм, мястото е уникално!",
                     CreatedAt = DateTime.Now.AddDays(-1),
                     ReviewId = 3,
-                    UserId = Guid.Parse("1605a048-00a2-44ef-bddb-171cd11dd641")
+                    UserId = Guid.Parse("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
                 },
                 new Comment
                 {
@@ -55,7 +55,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     ReCommentText = "Съгласен съм, мястото е уникално!",
                     CreatedAt = DateTime.Now.AddDays(-3),
                     ReviewId = 4,
-                    UserId = Guid.Parse("1605a048-00a2-44ef-bddb-171cd11dd641")
+                    UserId = Guid.Parse("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
                 }
             };
 

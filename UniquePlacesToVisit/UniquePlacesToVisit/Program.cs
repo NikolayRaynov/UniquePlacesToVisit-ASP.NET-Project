@@ -1,6 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UniquePlacesToVisit.Data;
+using UniquePlacesToVisit.Data.Models;
+using UniquePlacesToVisit.Data.Repository;
+using UniquePlacesToVisit.Data.Repository.Interfaces;
+using UniquePlaces.Web.Infrastructure.Extensions;
+using UniquePlacesToVist.Services.Data.Interfaces;
+using UniquePlacesToVist.Services.Data;
 
 namespace UniquePlacesToVisit
 {
@@ -18,6 +24,11 @@ namespace UniquePlacesToVisit
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.RegisterRepositories(typeof(ApplicationUser).Assembly);
+
+            builder.Services.AddScoped<ICityService, CityService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

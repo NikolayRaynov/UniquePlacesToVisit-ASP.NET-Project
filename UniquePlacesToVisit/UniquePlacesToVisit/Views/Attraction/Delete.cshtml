@@ -1,0 +1,28 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Attraction
+@model DeleteAttractionViewModel
+
+@{
+    ViewData["Title"] = "Потвърди изтриването на атракция";
+}
+
+<h1>Потвърди изтриването на атракция</h1>
+
+<div>
+    <h4>Атракция</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Име</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Описание</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Локация</dt>
+        <dd class="col-sm-10">@Model.Location</dd>
+        <dt class="col-sm-2">Град</dt>
+        <dd class="col-sm-10">@Model.CityName</dd>
+    </dl>
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Изтрий</button>
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </form>
+</div>

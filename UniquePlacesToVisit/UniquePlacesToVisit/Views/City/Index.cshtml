@@ -1,0 +1,28 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.City
+@model IEnumerable<CityIndexViewModel>
+
+@{
+    ViewData["Title"] = "Градове";
+}
+
+<h2>Списък с градове</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добави нов град</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Име на града</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in Model)
+        {
+            <tr>
+                <td>@city.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

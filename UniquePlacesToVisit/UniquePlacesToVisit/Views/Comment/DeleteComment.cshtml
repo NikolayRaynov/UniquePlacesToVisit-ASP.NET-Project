@@ -1,0 +1,12 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Comment
+@model CommentViewModel
+
+<h2>Изтриване на коментар</h2>
+
+<p>Сигурни ли сте, че искате да изтриете този коментар?</p>
+<p><strong>Текст на коментара:</strong> @Model.ReCommentText</p>
+
+<form asp-action="DeleteComment" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Изтрий</button>
+    <a asp-action="Details" asp-route-id="@Model.ReviewId" class="btn btn-secondary">Отказ</a>
+</form>

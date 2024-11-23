@@ -1,0 +1,13 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Comment
+@model CommentViewModel
+
+<h2>Редактиране на коментар</h2>
+
+<form asp-action="EditComment" asp-route-id="@Model.Id" method="post">
+    <div class="form-group">
+        <label for="ReCommentText">Текст на коментара</label>
+        <textarea id="ReCommentText" name="ReCommentText" class="form-control" required>@Model.ReCommentText</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Запази промените</button>
+    <a asp-action="Details" asp-route-id="@Model.ReviewId" class="btn btn-secondary">Отказ</a>
+</form>

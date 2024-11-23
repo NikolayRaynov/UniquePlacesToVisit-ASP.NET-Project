@@ -37,7 +37,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Rating = 5,
                     CreatedAt = DateTime.Now.AddDays(-10),
                     AttractionId = 1,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Review
                 {
@@ -46,7 +46,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Rating = 5,
                     CreatedAt = DateTime.Now.AddDays(-5),
                     AttractionId = 2,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Review
                 {
@@ -55,7 +55,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Rating = 5,
                     CreatedAt = DateTime.Now.AddDays(-2),
                     AttractionId = 3,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Review
                 {
@@ -64,7 +64,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Rating = 5,
                     CreatedAt = DateTime.Now.AddDays(-5),
                     AttractionId = 4,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 }
             };
 

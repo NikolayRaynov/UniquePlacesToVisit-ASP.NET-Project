@@ -1,0 +1,13 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Review
+@model ReviewViewModel
+
+<h2>Изтриване на ревю</h2>
+
+<p>Сигурни ли сте, че искате да изтриете това ревю?</p>
+<p><strong>Текст на ревюто:</strong> @Model.ReviewText</p>
+<p><strong>Рейтинг:</strong> @Model.Rating</p>
+
+<form asp-action="DeleteReview" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Изтрий</button>
+    <a asp-action="Details" asp-route-id="@Model.AttractionId" class="btn btn-secondary">Отказ</a>
+</form>

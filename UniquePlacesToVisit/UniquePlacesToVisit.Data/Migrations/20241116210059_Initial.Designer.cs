@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniquePlacesToVisit.Data;
 
@@ -11,9 +12,11 @@ using UniquePlacesToVisit.Data;
 namespace UniquePlacesToVisit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241116210059_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,9 +314,7 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasComment("Attraction name");
 
                     b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -322,48 +323,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Attractions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CityId = 15,
-                            Description = "Исторически манастир в югозападна България, известен със своята архитектура и история.Той е ставропигиален манастир на Българската православна църква, сред най-значимите културни паметници в България, символ на страната, включен в Списъка на световното наследство на ЮНЕСКО.",
-                            ImagePath = "/images/attractions/rilski-manastir.jpg",
-                            Location = "Рила планина, Благоевградска област",
-                            Name = "Рилски манастир",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CityId = 1,
-                            Description = "Софийският зоопарк е една от атракциите в София. Той е сред Стоте национални туристически обекта на Българския туристически съюз. Понастоящем в софийската зоологическа градина се отглеждат голям брой екзотични животни, както и много животни, които са характерни за българските земи. ",
-                            ImagePath = "/images/attractions/zoo-sofia.jpg",
-                            Location = "София",
-                            Name = "Зоопарк София",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CityId = 23,
-                            Description = "Освен с археологическите находки пещерата е известна и с многообразието от обитатели. Заради размножителния период на населяващите пещерата бозайници през юни и юли изцяло се затваря за посетители. Там обитават 12 вида защитени земноводни",
-                            ImagePath = "/images/attractions/devetashka-peshtera.jpg",
-                            Location = "Ловеч",
-                            Name = "Деветашка пещера",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CityId = 3,
-                            Description = "Разположен е сред зеленината в северната част на варненската Морска градина, с чудесен изглед към морето.\nОткрит е на 19.08.1984 г. и е един от символите не само на Варна, а и на българския туризъм. Делфинариумът е неотменна точка в програмите на всички туристи, посещаващи Черноморието.",
-                            ImagePath = "/images/attractions/delfinarium-varna.jpg",
-                            Location = "Варна",
-                            Name = "Делфинариум Варна",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.City", b =>
@@ -382,183 +341,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "София"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Пловдив"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Варна"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Бургас"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Русе"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Стара Загора"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Плевен"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Добрич"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Сливен"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Шумен"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Перник"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Хасково"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Ямбол"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Пазарджик"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "Благоевград"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "Велико Търново"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "Габрово"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "Видин"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Name = "Казанлък"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Name = "Кюстендил"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Name = "Кърджали"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Name = "Монтана"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Name = "Ловеч"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Name = "Разград"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            Name = "Силистра"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            Name = "Свищов"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            Name = "Дупница"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            Name = "Търговище"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            Name = "Сандански"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Name = "Петрич"
-                        },
-                        new
-                        {
-                            Id = 31,
-                            Name = "Карлово"
-                        },
-                        new
-                        {
-                            Id = 32,
-                            Name = "Несебър"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Name = "Септември"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            Name = "Поморие"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            Name = "Балчик"
-                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
@@ -571,9 +353,6 @@ namespace UniquePlacesToVisit.Data.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("ParentCommentId")
-                        .HasColumnType("int");
 
                     b.Property<string>("ReCommentText")
                         .IsRequired()
@@ -589,47 +368,11 @@ namespace UniquePlacesToVisit.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentCommentId");
-
                     b.HasIndex("ReviewId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 11, 14, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8430),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 1,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2024, 11, 19, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8514),
-                            ReCommentText = "Част от животните липсваха.",
-                            ReviewId = 2,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2024, 11, 22, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8522),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 3,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2024, 11, 20, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8529),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 4,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>
@@ -667,44 +410,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AttractionId = 1,
-                            CreatedAt = new DateTime(2024, 11, 13, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8365),
-                            Rating = 5,
-                            ReviewText = "Много красиво място с невероятна история. Малко е встрани от пътя, но пътуването си заслужава!",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AttractionId = 2,
-                            CreatedAt = new DateTime(2024, 11, 18, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8446),
-                            Rating = 5,
-                            ReviewText = "Много голям зоопарк със всякакви животни,които няма в никой друг зоопарк в България.",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AttractionId = 3,
-                            CreatedAt = new DateTime(2024, 11, 21, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8468),
-                            Rating = 5,
-                            ReviewText = "Невероятно красиво място",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AttractionId = 4,
-                            CreatedAt = new DateTime(2024, 11, 18, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8476),
-                            Rating = 5,
-                            ReviewText = "Задължително трябва да се посети",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -763,13 +468,13 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasOne("UniquePlacesToVisit.Data.Models.City", "City")
                         .WithMany("Attractions")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UniquePlacesToVisit.Data.Models.ApplicationUser", "User")
                         .WithMany("Attractions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("City");
@@ -779,23 +484,17 @@ namespace UniquePlacesToVisit.Data.Migrations
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
                 {
-                    b.HasOne("UniquePlacesToVisit.Data.Models.Comment", "ParentComment")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentCommentId");
-
                     b.HasOne("UniquePlacesToVisit.Data.Models.Review", "Review")
                         .WithMany("Comments")
                         .HasForeignKey("ReviewId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UniquePlacesToVisit.Data.Models.ApplicationUser", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ParentComment");
 
                     b.Navigation("Review");
 
@@ -807,13 +506,13 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasOne("UniquePlacesToVisit.Data.Models.Attraction", "Attraction")
                         .WithMany("Reviews")
                         .HasForeignKey("AttractionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UniquePlacesToVisit.Data.Models.ApplicationUser", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Attraction");
@@ -838,11 +537,6 @@ namespace UniquePlacesToVisit.Data.Migrations
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.City", b =>
                 {
                     b.Navigation("Attractions");
-                });
-
-            modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
-                {
-                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>

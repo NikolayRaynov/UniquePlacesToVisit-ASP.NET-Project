@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniquePlacesToVisit.Data;
 
@@ -11,9 +12,11 @@ using UniquePlacesToVisit.Data;
 namespace UniquePlacesToVisit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241116214149_SeedAttractions")]
+    partial class SeedAttractions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -572,9 +575,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ParentCommentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ReCommentText")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -589,47 +589,11 @@ namespace UniquePlacesToVisit.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentCommentId");
-
                     b.HasIndex("ReviewId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 11, 14, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8430),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 1,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2024, 11, 19, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8514),
-                            ReCommentText = "Част от животните липсваха.",
-                            ReviewId = 2,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2024, 11, 22, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8522),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 3,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedAt = new DateTime(2024, 11, 20, 19, 0, 8, 807, DateTimeKind.Local).AddTicks(8529),
-                            ReCommentText = "Съгласен съм, мястото е уникално!",
-                            ReviewId = 4,
-                            UserId = new Guid("6551c87a-71ef-45f5-9f14-dcae5e2868fa")
-                        });
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>
@@ -667,44 +631,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AttractionId = 1,
-                            CreatedAt = new DateTime(2024, 11, 13, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8365),
-                            Rating = 5,
-                            ReviewText = "Много красиво място с невероятна история. Малко е встрани от пътя, но пътуването си заслужава!",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AttractionId = 2,
-                            CreatedAt = new DateTime(2024, 11, 18, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8446),
-                            Rating = 5,
-                            ReviewText = "Много голям зоопарк със всякакви животни,които няма в никой друг зоопарк в България.",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AttractionId = 3,
-                            CreatedAt = new DateTime(2024, 11, 21, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8468),
-                            Rating = 5,
-                            ReviewText = "Невероятно красиво място",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AttractionId = 4,
-                            CreatedAt = new DateTime(2024, 11, 18, 19, 0, 8, 808, DateTimeKind.Local).AddTicks(8476),
-                            Rating = 5,
-                            ReviewText = "Задължително трябва да се посети",
-                            UserId = new Guid("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -779,10 +705,6 @@ namespace UniquePlacesToVisit.Data.Migrations
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
                 {
-                    b.HasOne("UniquePlacesToVisit.Data.Models.Comment", "ParentComment")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentCommentId");
-
                     b.HasOne("UniquePlacesToVisit.Data.Models.Review", "Review")
                         .WithMany("Comments")
                         .HasForeignKey("ReviewId")
@@ -794,8 +716,6 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("ParentComment");
 
                     b.Navigation("Review");
 
@@ -838,11 +758,6 @@ namespace UniquePlacesToVisit.Data.Migrations
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.City", b =>
                 {
                     b.Navigation("Attractions");
-                });
-
-            modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
-                {
-                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>

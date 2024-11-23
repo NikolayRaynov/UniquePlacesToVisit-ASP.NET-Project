@@ -22,7 +22,7 @@ namespace UniquePlacesToVisit.Data.Configurations
 
             builder
                 .Property(u => u.UserId)
-                .HasDefaultValue(Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770"));
+                .HasDefaultValue(Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b"));
 
             builder.HasData(SeedAttractions());
         }
@@ -39,7 +39,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                    Location = "Рила планина, Благоевградска област",
                    ImagePath = "/images/attractions/rilski-manastir.jpg",
                    CityId = 15,
-                   UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                   UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Attraction
                 {
@@ -49,7 +49,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Location = "София",
                     ImagePath = "/images/attractions/zoo-sofia.jpg",
                     CityId = 1,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Attraction
                 {
@@ -59,7 +59,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Location = "Ловеч",
                     ImagePath = "/images/attractions/devetashka-peshtera.jpg",
                     CityId = 23,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 },
                 new Attraction
                 {
@@ -69,7 +69,7 @@ namespace UniquePlacesToVisit.Data.Configurations
                     Location = "Варна",
                     ImagePath = "/images/attractions/delfinarium-varna.jpg",
                     CityId = 3,
-                    UserId = Guid.Parse("babedf22-6aca-4570-a7fc-23bc05fca770")
+                    UserId = Guid.Parse("55bc6032-2837-41ec-8cb9-34a4c88cae5b")
                 }
             };
 

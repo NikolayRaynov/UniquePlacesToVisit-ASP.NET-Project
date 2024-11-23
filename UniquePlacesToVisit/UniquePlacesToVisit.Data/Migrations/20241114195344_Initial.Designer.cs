@@ -12,8 +12,8 @@ using UniquePlacesToVisit.Data;
 namespace UniquePlacesToVisit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241031180015_SeedCities")]
-    partial class SeedCities
+    [Migration("20241114195344_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,9 +229,11 @@ namespace UniquePlacesToVisit.Data.Migrations
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.ApplicationUser", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -297,6 +299,10 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasComment("Description to attraction in current city");
 
+                    b.Property<string>("ImagePath")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -309,9 +315,14 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasColumnType("nvarchar(80)")
                         .HasComment("Attraction name");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Attractions");
                 });
@@ -522,6 +533,9 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ReCommentText")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -531,10 +545,12 @@ namespace UniquePlacesToVisit.Data.Migrations
                     b.Property<int>("ReviewId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("ReviewId");
 
@@ -563,13 +579,12 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasComment("Rating from user with range one to five stars");
 
                     b.Property<string>("ReviewText")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("User review for current destination");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -639,11 +654,24 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("UniquePlacesToVisit.Data.Models.ApplicationUser", "User")
+                        .WithMany("Attractions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
                 {
+                    b.HasOne("UniquePlacesToVisit.Data.Models.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("UniquePlacesToVisit.Data.Models.Review", "Review")
                         .WithMany("Comments")
                         .HasForeignKey("ReviewId")
@@ -655,6 +683,8 @@ namespace UniquePlacesToVisit.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("ParentComment");
 
                     b.Navigation("Review");
 
@@ -682,6 +712,8 @@ namespace UniquePlacesToVisit.Data.Migrations
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Attractions");
+
                     b.Navigation("Comments");
 
                     b.Navigation("Reviews");
@@ -695,6 +727,11 @@ namespace UniquePlacesToVisit.Data.Migrations
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.City", b =>
                 {
                     b.Navigation("Attractions");
+                });
+
+            modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Comment", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("UniquePlacesToVisit.Data.Models.Review", b =>

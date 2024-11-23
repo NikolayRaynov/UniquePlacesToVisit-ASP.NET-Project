@@ -1,0 +1,62 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Attraction
+@model AttractionDetailsViewModel
+
+<h1>@Model.Name</h1>
+@if (!string.IsNullOrEmpty(Model.ImagePath))
+{
+    <img src="@Url.Content(Model.ImagePath)" alt="@Model.Name" style="width:100px; height:auto;" />
+}
+else
+{
+    <span>Няма налична снимка</span>
+}
+<p>@Model.Description</p>
+<p>Локация: @Model.Location</p>
+<p>Град: @Model.CityName</p>
+
+@if (Model.Reviews.Any())
+{
+    <h3>Ревюта</h3>
+    <ul>
+       @foreach (var review in Model.Reviews)
+{
+    <li>
+        <strong>@review.UserName</strong> - @review.CreatedAt.ToShortDateString()
+        <br />
+        Рейтинг: @review.Rating / 5
+        <p>@review.ReviewText</p>
+
+        @if (User.Identity.Name == review.UserName)
+        {
+            <a asp-action="EditReview" asp-route-id="@review.Id">Редактирай</a>;
+            <a asp-action="DeleteReview" asp-route-id="@review.Id">Изтрий</a>
+        }
+
+        @if (review.Comments.Any())
+        {
+            <ul>
+                @foreach (var comment in review.Comments)
+                {
+                    <li>
+                        <strong>@comment.UserName</strong> - @comment.CreatedAt.ToShortDateString()
+                        <p>@comment.ReCommentText</p>
+
+                        @if (User.Identity.Name == comment.UserName)
+                        {
+                            <a asp-controller="Comment" asp-action="EditComment" asp-route-id="@comment.Id">Редактирай</a>;
+                            <a asp-controller="Comment" asp-action="DeleteComment" asp-route-id="@comment.Id">Изтрий</a>
+                        }
+                        <a asp-action="ReplyComment" asp-route-id="@comment.Id">Отговори</a>
+                    </li>
+                }
+            </ul>
+        }
+    </li>
+}
+
+    </ul>
+}
+else
+{
+    <p>Няма налични ревюта за тази атракция.</p>
+}

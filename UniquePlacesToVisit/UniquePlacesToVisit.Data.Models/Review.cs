@@ -27,7 +27,7 @@ namespace UniquePlacesToVisit.Data.Models
         [ForeignKey(nameof(AttractionId))]
         public virtual Attraction Attraction { get; set; } = null!;
 
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } = Guid.NewGuid();
 
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;

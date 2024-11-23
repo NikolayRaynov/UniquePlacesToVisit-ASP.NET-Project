@@ -1,0 +1,51 @@
+﻿@using UniquePlacesToVisit.Web.ViewModels.Attraction
+@model IEnumerable<AttractionIndexViewModel>
+
+@{
+    ViewData["Title"] = "Забележителности";
+}
+
+<h1>Забележителности</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добави нова забележителност</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Снимка</th>
+            <th>Описание</th>
+            <th>Локация</th>
+            <th>Град</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attraction in Model)
+        {
+            <tr>
+                <td>@attraction.Name</td>
+                 <td>
+                    @if (!string.IsNullOrEmpty(attraction.ImagePath))
+                    {
+                        <img src="@Url.Content(attraction.ImagePath)" alt="@attraction.Name" style="width:100px; height:auto;" />
+                    }
+                    else
+                    {
+                        <span>Няма налична снимка</span>
+                    }
+                </td>
+                <td>@attraction.Description</td>
+                <td>@attraction.Location</td>
+                <td>@attraction.CityName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@attraction.Id" class="btn btn-success">Редактирай</a>
+                    <a asp-action="Details" asp-route-id="@attraction.Id" class="btn btn-primary">Отзиви</a>
+                    <a asp-action="Delete" asp-route-id="@attraction.Id" class="btn btn-danger">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
